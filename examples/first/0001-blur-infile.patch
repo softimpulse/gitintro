@@ -1,0 +1,26 @@
+From 706d4f8a82431ea2772e209a6d1474874407ad1f Mon Sep 17 00:00:00 2001
+From: Matthias Schroeder <ms@softimpulse.de>
+Date: Wed, 30 Aug 2017 20:37:34 +0200
+Subject: [PATCH] blur infile
+
+---
+ examples/first/PIL-ex1.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/examples/first/PIL-ex1.py b/examples/first/PIL-ex1.py
+index ba0b527..1b1c84d 100755
+--- a/examples/first/PIL-ex1.py
++++ b/examples/first/PIL-ex1.py
+@@ -11,4 +11,7 @@ except:
+ 
+ print "The size of the %s-Image %s is: %s, Mode %s" % (original.format, infile, original.size, original.mode)
+ 
+-original.show()
+\ No newline at end of file
++blurred = original.filter(ImageFilter.BLUR)
++
++original.show()
++blurred.show()
+-- 
+2.11.0
+
