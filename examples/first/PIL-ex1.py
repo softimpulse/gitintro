@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import argparse
 from PIL import Image, ImageFilter
 
 parser= argparse.ArgumentParser()
