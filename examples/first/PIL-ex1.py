@@ -2,7 +2,7 @@
 
 from PIL import Image, ImageFilter
 
-infile= "img/Hard_Drive_cat.jpg"
+infile= "img/Hard_Drive_Cat.jpg"
 try:
     original = Image.open(infile)
 except:
