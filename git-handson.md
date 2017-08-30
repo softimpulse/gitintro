@@ -31,12 +31,12 @@ Go back to gitexamples/
 
 ```
 mkdir mine
-cp -r gitintro/examples/first mine/
+cp -a gitintro/examples/first mine/
 cd mine
 git status
 ```
 
-Remember: The files inside a git repo have no git magic, also subdirs - only .git in projects root
+Remember: The files inside a git repo have no git magic, also not subdirs - only .git in projects root!
 
 Create your own git- repo:
 
@@ -49,3 +49,6 @@ git commit 'I will never forget my first commit'
 git status
 ```
 
+Start executable: `./PIL-ex1.py`, 1. curse 2. fix 3. commit
+
+ 
