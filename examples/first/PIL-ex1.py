@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import argparse
 from PIL import Image, ImageFilter
 
 parser= argparse.ArgumentParser()
@@ -16,4 +15,7 @@ except:
 
 print "The size of the %s-Image %s is: %s, Mode %s" % (original.format, infile, original.size, original.mode)
 
+blurred = original.filter(ImageFilter.BLUR)
+
 original.show()
+blurred.show()
