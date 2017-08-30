@@ -1,8 +1,13 @@
 #!/usr/bin/python
 
+import argparse
 from PIL import Image, ImageFilter
 
-infile= "img/Hard_Drive_Cat.jpg"
+parser= argparse.ArgumentParser()
+parser.add_argument('img', nargs='?', default="img/vc-xkcd.jpg", help='Image to display')
+args= parser.parse_args()
+
+infile= args.img
 try:
     original = Image.open(infile)
 except:
