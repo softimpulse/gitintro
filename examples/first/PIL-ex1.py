@@ -1,13 +1,8 @@
 #!/usr/bin/python
 
-import argparse
 from PIL import Image, ImageFilter
 
-parser= argparse.ArgumentParser()
-parser.add_argument('img', nargs='?', default="img/vc-xkcd.jpg", help='Image to display')
-args= parser.parse_args()
-
-infile= args.img
+infile= "img/Hard_Drive_cat.jpg"
 try:
     original = Image.open(infile)
 except:
@@ -16,7 +11,3 @@ except:
 
 print "The size of the %s-Image %s is: %s, Mode %s" % (original.format, infile, original.size, original.mode)
 
-blurred = original.filter(ImageFilter.BLUR)
-
-original.show()
-blurred.show()
