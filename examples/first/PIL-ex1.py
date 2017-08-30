@@ -11,4 +11,7 @@ except:
 
 print "The size of the %s-Image %s is: %s, Mode %s" % (original.format, infile, original.size, original.mode)
 
+blurred = original.filter(ImageFilter.BLUR)
+
 original.show()
+blurred.show()
