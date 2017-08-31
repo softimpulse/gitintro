@@ -73,6 +73,38 @@ echo origin.show() >> PIL_ex1.py
 
 try it out and commit the as 'first beta', `git tag beta1` sets a flag to this commit - kind of a version number.
 
+Lets make a branch: `git checkout -b processing` creates a branch and jumps onto it, check with `git status`, `ls`.
+
+We can change by hand or apply a patch we got from heaven: `cat 0001-blur-infile.patch` - a collegue
+
+Apply with `git apply 0001-blur-infile.patch`, do a `git status`, `git diff`, ... (Could fail, sorry - in that case do cp ... ill tell you ,)
+
+commit this change
+
+go back to master branch `git checkout master`
+
+add the lines
+
+```
+import argparse
+
+parser= argparse.ArgumentParser()
+parser.add_argument('img', nargs='?', default="img/vc-xkcd.jpg", help='Image
+args= parser.parse_args()
+
+infile= args.img
+```
+
+between `from PIL import ...` and `try` by replacing `infile='img/...'
+
+test it, try also `PIL-ex1.py -h`
+
+Get into little trouble: `git checkout processing`
+
+and learn about `git stash` and `git stash apply`
+
+
+
 To be continued
 
 
