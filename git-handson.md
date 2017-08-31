@@ -4,14 +4,18 @@ You should have a linux computer - debian or ubuntu based, otherwise at least in
 
 ## Preparation
 
-`sudo apt install git markdown rsync python-pil` - some of these might be installed but it doesnt hurt.
+`sudo apt install git markdown rsync python-pil meld gitk; sudo apt install python-grip; sudo apt install grip` - some of these might be installed but it doesnt hurt, one of the grip commands will fail.
 
 ```
-git config --global user.email "b.simpson@springfield.com" 
+git config --global user.email "b.simpson@springfield.com"
 git config --global user.name "Bart Simpson"
 ```
 
-Should be done once, sets default email and username for commit messages, there is a `git blame` to find you! *Without the `-global` but still within a project sets a possibly different username/mail for this project* 
+Should be done once, sets default email and username for commit messages, there is a `git blame` to find you! *Without the `-global` but still within a project sets a possibly different username/mail for this project*
+
+## Script
+
+The following is kind of a script for the workshop, no needs to prepare something.
 
 Visit https://github.com/softimpulse/gitintro.git
 
@@ -51,4 +55,24 @@ git status
 
 Start executable: `./PIL-ex1.py`, 1. curse 2. fix 3. commit
 
- 
+Fix the bug in central repo: `git push` -- Why?
+
+goto ../gitintro, fix the source there, do a `git push` - also just a message -- Why?
+
+Create Patch file with:
+
+`git format-patch -M HEAD~` and do a `cat 0001- ...`, this thing can be send to origins maintainer.
+
+visit https://gitlab.uni-oldenburg.de, login, create a repo and add this new gitlab repo to your newly created.
+
+Got the dir with PIL-ex1.py
+
+```
+echo origin.show() >> PIL_ex1.py
+```
+
+try it out and commit the as 'first beta', `git tag beta1` sets a flag to this commit - kind of a version number.
+
+To be continued
+
+
