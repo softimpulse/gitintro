@@ -4,7 +4,7 @@ You should have a linux computer - debian or ubuntu based, otherwise at least in
 
 ## Preparation
 
-`sudo apt install git markdown rsync python-pil meld gitk; sudo apt install python-grip; sudo apt install grip` - some of these might be installed but it doesnt hurt, one of the grip commands will fail.
+`sudo apt install git markdown rsync python-pil meld gitk;` - some of these might be installed but it doesnt hurt, one of the grip commands will fail.
 
 ```
 git config --global user.email "b.simpson@springfield.com"
