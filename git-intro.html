@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="class" content="slideshow"><style>body {
   max-width: 980px;
   border: 1px solid #ddd;
   outline: 1300px solid #fff;
@@ -1014,71 +1014,131 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>git-handson</title></head><body><article class="markdown-body"><h1 id="git-finally-do-something"><a name="user-content-git-finally-do-something" href="#git-finally-do-something" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Git - finally do something</h1>
-<p>You should have a linux computer - debian or ubuntu based, otherwise at least installation sdteps will differ. For the following: <code>Typewriter font</code> is a command to be typed in a terminal, the rest is most likely a comment.</p>
-<h2 id="preparation"><a name="user-content-preparation" href="#preparation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Preparation</h2>
-<p><code>sudo apt install git markdown rsync python-pil meld gitk;</code> - some of these might be installed but it doesnt hurt, one of the grip commands will fail.</p>
-<pre><code>git config --global user.email &quot;b.simpson@springfield.com&quot;
-git config --global user.name &quot;Bart Simpson&quot;
+</style><title>git-intro</title></head><body><article class="markdown-body"><h1 id="intro-version-control"><a name="user-content-intro-version-control" href="#intro-version-control" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Intro version control</h1>
+<ul>
+<li><img alt="VC" src="/home/ms/gitintro/examples/first/img/Hard_Drive_Cat.jpg" /></li>
+<li><img alt="VC" src="/home/ms/gitintro/examples/first/img/paperducts.jpg" /></li>
+<li><img alt="VC" src="/home/ms/gitintro/examples/first/img/vc-xkcd.jpg" /></li>
+<li><img alt="VC" src="/home/ms/gitintro/examples/first/img/version-control-1.jpg" /></li>
+</ul>
+<hr />
+<h1 id="intro-version-control_1"><a name="user-content-intro-version-control_1" href="#intro-version-control_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Intro Version control</h1>
+<ul>
+<li>vcs, cvs, rcs darcs, git</li>
+<li>bitbucket, gitlab, github</li>
+<li>version, release, feature</li>
+<li>commit, branch, merge, origin, remote</li>
+<li>distributed, push, pull, patch</li>
+<li><strong>why</strong> should i care</li>
+<li><strong>why</strong> was it introduced</li>
+<li><strong>why</strong> so many alternatives for this simple question</li>
+</ul>
+<hr />
+<h1 id="why-version-control"><a name="user-content-why-version-control" href="#why-version-control" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Why version control</h1>
+<h2 id="lifecycle-of-software"><a name="user-content-lifecycle-of-software" href="#lifecycle-of-software" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Lifecycle of software</h2>
+<ol>
+<li>Idea</li>
+<li>Program</li>
+<li>Do Samples, get new ideas</li>
+<li>Do Bugfixes -&gt; 2</li>
+<li>Add Features -&gt; 2</li>
+<li>Release to customers, papers, collegues, friends -&gt; 3</li>
+</ol>
+<p>A -&gt; B -&gt; C -&gt; D -&gt; E &hellip;</p>
+<p>One think missing</p>
+<hr />
+<h2 id="states-of-software"><a name="user-content-states-of-software" href="#states-of-software" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>States of software</h2>
+<ul>
+<li>
+<p><strong>OOPS</strong> Some glorious ideas turn out to be not sooooo smart, you have to go back (rollback)</p>
+<ul>
+<li>I&rsquo;m smart, i copy everything before i change something! Really smart?</li>
+</ul>
+</li>
+<li>
+<p><strong>UUPS</strong> Your program is cute and solves many problems, but small adaptions are needed for each problem.</p>
+</li>
+<li>
+<p><strong>HMM</strong> Other people start to send in great new features</p>
+</li>
+</ul>
+<p><img alt="oops%" src="img/oops.jpg" /></p>
+<hr />
+<h3 id="look-at-linux-kernel"><a name="user-content-look-at-linux-kernel" href="#look-at-linux-kernel" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Look at Linux kernel</h3>
+<ul>
+<li>The average number of changes accepted into the kernel per hour is 7.71, which translates to 185 changes every day and nearly 1,300 per week</li>
+<li>2000 developers contributing in last 15 month</li>
+</ul>
+<p><a href="https://arstechnica.com/information-technology/2015/02/linux-has-2000-new-developers-and-gets-10000-patches-for-each-version/">arstechnica</a></p>
+<p><img alt=":scale 80%" src="img/lotsofpaper.jpg" /></p>
+<hr />
+<h2 id="what-are-versions-and-how-to-manage"><a name="user-content-what-are-versions-and-how-to-manage" href="#what-are-versions-and-how-to-manage" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>What are versions and how to manage</h2>
+<ul>
+<li>Versionnumbers: Matlab2015a, Matlab2015b, Matlab12 &hellip;</li>
+<li>Patches: small(?) changes which fix a bug, add a feature</li>
+</ul>
+<p><strong>Commit</strong> here: a group of changes applied to the sourcecode stored in history (for databases this is different)<br />
+<strong>Patch</strong> here: formated description of changed lines</p>
+<p><code>diff -p</code></p>
+<p><code>git log -p</code></p>
+<hr />
+<h2 id="restriction-of-these-diff-patches"><a name="user-content-restriction-of-these-diff-patches" href="#restriction-of-these-diff-patches" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Restriction of <strong>these</strong> <code>diff</code> patches</h2>
+<ul>
+<li>only applies(?) to text formats</li>
+<li>no understanding of meaning (change of whitespace)</li>
+<li>no understanding of meaning (not to be taken as independent)</li>
+<li>huge amounts of data for binary files</li>
+</ul>
+<p>Rule of thumb:</p>
+<ul>
+<li>exclude *.o, generated executables &hellip;</li>
+<li>store the generating code (dia, use svg)</li>
+<li>avoid Word, Excel as long (or as soon) as possible</li>
+<li>store large data changes as script</li>
+</ul>
+<hr />
+<h2 id="git-some-commands"><a name="user-content-git-some-commands" href="#git-some-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>git some commands</h2>
+<ul>
+<li><code>git init</code> creates a new (empty) repository in the current dir (creates <code>.git/</code>), make sure you are in a dir not already under VC</li>
+<li><code>git status</code> shows the state of your files in relation to the repository, files can be untracked, changed, on stage or synchronized</li>
+<li><code>git add</code> puts files on stage (either with file/dirnames or .)</li>
+<li><code>git commit</code> puts a files state in the repository, either from stage or by file/dirname or -a for all</li>
+<li><code>git log</code> shows the history of the repository</li>
+</ul>
+<h2 id="all-commands-are-smart-git-add-only-adds-files-which-are-untracked-or-not-already-on-stage"><a name="user-content-all-commands-are-smart-git-add-only-adds-files-which-are-untracked-or-not-already-on-stage" href="#all-commands-are-smart-git-add-only-adds-files-which-are-untracked-or-not-already-on-stage" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>All commands are &ldquo;smart&rdquo;, <code>git add .</code> only adds files which are untracked or not already on stage.</h2>
+<h2 id="some-preparations-to-be-done-before-starting"><a name="user-content-some-preparations-to-be-done-before-starting" href="#some-preparations-to-be-done-before-starting" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>some preparations to be done before starting</h2>
+<pre><code>git config --global user.name 'Ford Prefect'
+git config --global user.email 'fp@uol.de'
+git config --global color.ui 'auto'
 </code></pre>
 
-<p>Should be done once, sets default email and username for commit messages, there is a <code>git blame</code> to find you! <em>Without the <code>-global</code> but still within a project sets a possibly different username/mail for this project</em></p>
-<h2 id="script"><a name="user-content-script" href="#script" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Script</h2>
-<p>The following is kind of a script for the workshop, no needs to prepare something.</p>
-<p>Visit <a href="https://github.com/softimpulse/gitintro.git">https://github.com/softimpulse/gitintro.git</a></p>
-<pre><code>mkdir gitexamples  # sets up a directory for this lecture
-cd gitexamples     # P.S. instead of typing gitexamples just hit Alt-.
-git clone https://github.com/softimpulse/gitintro.git
-</code></pre>
+<p>sets some defaults for this computer (stored in <code>~/.gitconfig</code>)</p>
+<hr />
+<h2 id="git-small-example"><a name="user-content-git-small-example" href="#git-small-example" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>git small example</h2>
+<p>Enter a dir with some textfiles not under VC</p>
+<pre><code class="terminal">┌─┤0 ms@tulip: /home/ms/t/git  ()
+└ 23:09:28 Δ=? $ git init
+Initialized empty Git repository in /home/ms/t/git/.git/
+┌─┤0 ms@tulip: /home/ms/t/git  (master) ()
+└ 23:09:58 Δ=? $ git status
+On branch master
+Initial commit
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+    Hard_Drive_Cat.jpg
+    git-intro.md
+...
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+┌─┤0 ms@tulip: /home/ms/t/git  (master) ()
+└ 23:11:15 Δ=? $ git add .
+┌─┤0 ms@tulip: /home/ms/t/git  (master) ()
+└ 23:13:24 Δ=? $ git status
+On branch master
+Initial commit
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
 
-<p><code>ls</code> - nothing really unexpected, i assume? Maybe you expected a <code>.git</code>, well historical bla, you can even clone without this <code>.git</code></p>
-<p><code>git status</code> - well we are not in a git repo</p>
-<p><code>cd gitintro</code> and again: <code>git status</code> we are on master branch, the default and we are in sync with origin (the github repo, where we got this stuff) and branch master (It is not necessary that branchnames on remote and master are equal) take a look at the README with <code>less README.md</code> (quit with <code>q</code>), do an <code>ls -la</code>, all the GIT magic is in <code>.git</code> nowhere else!</p>
-<p>Go back to gitexamples/</p>
-<pre><code>mkdir mine
-cp -a gitintro/examples/first mine/
-cd mine
-git status
-</code></pre>
-
-<p>Remember: The files inside a git repo have no git magic, also not subdirs - only .git in projects root!</p>
-<p>Create your own git- repo:</p>
-<pre><code>git init
-git status
-git add .
-git status
-git commit 'I will never forget my first commit'
-git status
-</code></pre>
-
-<p>Start executable: <code>./PIL-ex1.py</code>, 1. curse 2. fix 3. commit</p>
-<p>Fix the bug in central repo: <code>git push</code> &ndash; Why?</p>
-<p>goto ../gitintro, fix the source there, do a <code>git push</code> - also just a message &ndash; Why?</p>
-<p>Create Patch file with:</p>
-<p><code>git format-patch -M HEAD~</code> and do a <code>cat 0001- ...</code>, this thing can be send to origins maintainer.</p>
-<p>visit <a href="https://gitlab.uni-oldenburg.de">https://gitlab.uni-oldenburg.de</a>, login, create a repo and add this new gitlab repo to your newly created.</p>
-<p>Got the dir with PIL-ex1.py</p>
-<pre><code>echo origin.show() &gt;&gt; PIL_ex1.py
-</code></pre>
-
-<p>try it out and commit the as &lsquo;first beta&rsquo;, <code>git tag beta1</code> sets a flag to this commit - kind of a version number.</p>
-<p>Lets make a branch: <code>git checkout -b processing</code> creates a branch and jumps onto it, check with <code>git status</code>, <code>ls</code>.</p>
-<p>We can change by hand or apply a patch we got from heaven: <code>cat 0001-blur-infile.patch</code> - a collegue</p>
-<p>Apply with <code>git apply 0001-blur-infile.patch</code>, do a <code>git status</code>, <code>git diff</code>, &hellip; (Could fail, sorry - in that case do cp &hellip; ill tell you ,)</p>
-<p>commit this change</p>
-<p>go back to master branch <code>git checkout master</code></p>
-<p>add the lines</p>
-<pre><code>import argparse
-
-parser= argparse.ArgumentParser()
-parser.add_argument('img', nargs='?', default=&quot;img/vc-xkcd.jpg&quot;, help='Image
-args= parser.parse_args()
-
-infile= args.img
-</code></pre>
-
-<p>between <code>from PIL import ...</code> and <code>try</code> by replacing `infile=&rsquo;img/&hellip;&rsquo;</p>
-<p>test it, try also <code>PIL-ex1.py -h</code></p>
-<p>Get into little trouble: <code>git checkout processing</code></p>
-<p>and learn about <code>git stash</code> and <code>git stash apply</code></p>
-<p>To be continued</p></article></body></html>
+    new file:   Hard_Drive_Cat.jpg
+    new file:   git-intro.md
+...
+</code></pre></article></body></html>
