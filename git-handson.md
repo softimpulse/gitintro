@@ -61,6 +61,8 @@ git commit 'I will never forget my first commit'
 git status
 ```
 
+---
+
 ### get real
 
 Start the executable: `./PIL-ex1.py`, 
@@ -73,7 +75,7 @@ Fix the bug in central repo: `git push` -- Why?
 
 goto ../gitintro, fix the source there, do a `git push` - also just a message -- Why?
 
-----
+---
 
 ### help the project
 
@@ -112,11 +114,15 @@ visit https://git-scm.com/book/en/v2/Git-Basics-Tagging
 
 Lets make a branch: `git checkout -b processing` creates a branch and jumps onto it, check with `git status`, `ls`.
 
-We can change by hand or apply a patch we got from heaven: `cat 0001-blur-infile.patch` 
+We can change by hand or apply a patch we got from heaven: 
+
+`cat 0001-blur-infile.patch` 
 
 Apply with `git apply 0001-blur-infile.patch`, do a `git status`, `git diff`, ... (Could fail, sorry - in that case do cp ... i'll tell you ,)
 
 commit this change
+
+---
 
 ### Branches - switch
 
@@ -145,6 +151,8 @@ test it, try also `PIL-ex1.py -h`
 Get into little trouble: `git checkout processing`
 
 and learn about `git stash` and `git stash apply`
+
+---
 
 ### Walking through and changing history
 
