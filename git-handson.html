@@ -1023,6 +1023,7 @@ git config --global user.name &quot;Bart Simpson&quot;
 </code></pre>
 
 <p>Should be done once, sets default email and username for commit messages, there is a <code>git blame</code> to find you! <em>Without the <code>-global</code> but still within a project sets a possibly different username/mail for this project</em></p>
+<hr />
 <h2 id="script"><a name="user-content-script" href="#script" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Script</h2>
 <p>The following is kind of a script for the workshop, no needs to prepare something.</p>
 <p>Visit <a href="https://github.com/softimpulse/gitintro.git">https://github.com/softimpulse/gitintro.git</a></p>
@@ -1034,15 +1035,19 @@ git clone https://github.com/softimpulse/gitintro.git
 <p><code>ls</code> - nothing really unexpected, i assume? Maybe you expected a <code>.git</code>, well historical bla, you can even clone without this <code>.git</code></p>
 <p><code>git status</code> - well we are not in a git repo</p>
 <p><code>cd gitintro</code> and again: <code>git status</code> we are on master branch, the default and we are in sync with origin (the github repo, where we got this stuff) and branch master (It is not necessary that branchnames on remote and master are equal) take a look at the README with <code>less README.md</code> (quit with <code>q</code>), do an <code>ls -la</code>, all the GIT magic is in <code>.git</code> nowhere else!</p>
-<p>Go back to gitexamples/</p>
-<pre><code>mkdir mine
+<hr />
+<h3 id="starting-a-new-project"><a name="user-content-starting-a-new-project" href="#starting-a-new-project" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Starting a new project</h3>
+<pre><code>cd ..           # you should be in gitexamples - so 
+                # outside of git controlled tree 
+mkdir mine
 cp -a gitintro/examples/first mine/
 cd mine
 git status
 </code></pre>
 
 <p>Remember: The files inside a git repo have no git magic, also not subdirs - only .git in projects root!</p>
-<p>Create your own git- repo:</p>
+<hr />
+<h3 id="create-your-own-git-repo"><a name="user-content-create-your-own-git-repo" href="#create-your-own-git-repo" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Create your own git- repo:</h3>
 <pre><code>git init
 git status
 git add .
@@ -1051,21 +1056,45 @@ git commit 'I will never forget my first commit'
 git status
 </code></pre>
 
-<p>Start executable: <code>./PIL-ex1.py</code>, 1. curse 2. fix 3. commit</p>
+<hr />
+<h3 id="get-real"><a name="user-content-get-real" href="#get-real" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>get real</h3>
+<p>Start the executable: <code>./PIL-ex1.py</code>, <br />
+1. curse <br />
+2. fix <br />
+3. do a <code>git status</code>, try a <code>git diff</code> and a <code>git diff --wo[TAB]</code><br />
+3. commit</p>
 <p>Fix the bug in central repo: <code>git push</code> &ndash; Why?</p>
 <p>goto ../gitintro, fix the source there, do a <code>git push</code> - also just a message &ndash; Why?</p>
+<hr />
+<h3 id="help-the-project"><a name="user-content-help-the-project" href="#help-the-project" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>help the project</h3>
 <p>Create Patch file with:</p>
 <p><code>git format-patch -M HEAD~</code> and do a <code>cat 0001- ...</code>, this thing can be send to origins maintainer.</p>
-<p>visit <a href="https://gitlab.uni-oldenburg.de">https://gitlab.uni-oldenburg.de</a>, login, create a repo and add this new gitlab repo to your newly created.</p>
+<hr />
+<h3 id="create-your-own-remote-repo"><a name="user-content-create-your-own-remote-repo" href="#create-your-own-remote-repo" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>create your own remote repo</h3>
+<p>visit <a href="https://gitlab.uni-oldenburg.de">https://gitlab.uni-oldenburg.de</a>, login, create a repo and add this new gitlab repo to your newly created by following the instructions there.</p>
 <p>Got the dir with PIL-ex1.py</p>
 <pre><code>echo origin.show() &gt;&gt; PIL_ex1.py
 </code></pre>
 
-<p>try it out and commit the as &lsquo;first beta&rsquo;, <code>git tag beta1</code> sets a flag to this commit - kind of a version number.</p>
+<hr />
+<h3 id="show-you-are-smart"><a name="user-content-show-you-are-smart" href="#show-you-are-smart" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Show you are smart</h3>
+<p>Start the executable: <code>./PIL-ex1.py</code>,</p>
+<ol>
+<li>sweet</li>
+<li>commit</li>
+<li><code>git tag hurray1</code> sets a flag to this commit - kind of a version number.</li>
+<li>do a <code>git push origin --tags</code></li>
+</ol>
+<p>visit <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">https://git-scm.com/book/en/v2/Git-Basics-Tagging</a></p>
+<hr />
+<h3 id="branches-create"><a name="user-content-branches-create" href="#branches-create" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Branches - create</h3>
 <p>Lets make a branch: <code>git checkout -b processing</code> creates a branch and jumps onto it, check with <code>git status</code>, <code>ls</code>.</p>
-<p>We can change by hand or apply a patch we got from heaven: <code>cat 0001-blur-infile.patch</code> - a collegue</p>
-<p>Apply with <code>git apply 0001-blur-infile.patch</code>, do a <code>git status</code>, <code>git diff</code>, &hellip; (Could fail, sorry - in that case do cp &hellip; ill tell you ,)</p>
+<p>We can change by hand or apply a patch we got from heaven: </p>
+<p><code>cat 0001-blur-infile.patch</code> </p>
+<p>Apply with <code>git apply 0001-blur-infile.patch</code>, do a <code>git status</code>, <code>git diff</code>, &hellip; (Could fail, sorry - in that case do cp &hellip; i&rsquo;ll tell you ,)</p>
 <p>commit this change</p>
+<hr />
+<h3 id="branches-switch"><a name="user-content-branches-switch" href="#branches-switch" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Branches - switch</h3>
 <p>go back to master branch <code>git checkout master</code></p>
 <p>add the lines</p>
 <pre><code>import argparse
@@ -1079,6 +1108,16 @@ infile= args.img
 
 <p>between <code>from PIL import ...</code> and <code>try</code> by replacing `infile=&rsquo;img/&hellip;&rsquo;</p>
 <p>test it, try also <code>PIL-ex1.py -h</code></p>
+<hr />
+<h3 id="branches-first-trouble"><a name="user-content-branches-first-trouble" href="#branches-first-trouble" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Branches first trouble</h3>
 <p>Get into little trouble: <code>git checkout processing</code></p>
 <p>and learn about <code>git stash</code> and <code>git stash apply</code></p>
+<hr />
+<h3 id="walking-through-and-changing-history"><a name="user-content-walking-through-and-changing-history" href="#walking-through-and-changing-history" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Walking through and changing history</h3>
+<ul>
+<li><code>git reset</code></li>
+<li><code>git checkout</code></li>
+<li><code>git revert</code></li>
+<li><code>git rebase</code></li>
+</ul>
 <p>To be continued</p></article></body></html>
